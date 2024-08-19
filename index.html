@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook - Misión</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .note {
+            background-color: #ffeb3b;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .nav-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-buttons button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-6').style.display = 'none';
+            }
+        }
+
+        function navigateTo(id) {
+            var element = document.getElementById(id);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook S1 - M01</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+    <!-- Actividad 1 (4 pasos) -->
+    <div id="activity-1" class="activity">
+        <div class="banner" onclick="toggleContent('saludo_ritual')">
+            <div class="title">
+                <span>📚 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+                <span>⏰ Tiempo: 2.5 minutos</span>
+            </div>
+            <div class="subtitle">Iniciar la clase con energía positiva y motivación</div>
+        </div>
+        <div id="saludo_ritual" class="content">
+            <div class="section">
+                <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 2 "Gnius Club"</div>
+                <div class="section-title">Diálogo del Maestro</div>
+                <div class="dialogue">¿Qué tal, Genios? Hoy vamos a empezar nuestro viaje en el mundo del diseño 3D, es un tema que me parece fascinante y es una herramienta que les va a abrir un sinfín de posibilidades.</div>
+            </div>
+            <div class="section">
+                <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 3 "¿Cómo están?"</div>
+                <div class="section-title">Diálogo del Maestro</div>
+                <div class="dialogue">Pero antes de empezar, me gustaría saber cómo se sienten hoy. Si están con buena energía, estiren ambos brazos hacia arriba lo más que puedan. Si sienten que les falta un poco de chispa, estiren ambos brazos hacia los costados lo más que puedan y respiren hondo. Vamos a ver cómo está el ambiente hoy.</div>
+            </div>
+            <div class="section">
+                <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 4 "Gracias por Asistir"</div>
+                <div class="section-title">Diálogo del Maestro</div>
+                <div class="dialogue">Como siempre, vamos a tomar un momento para agradecer estar aquí juntos. Juntemos las manos y digamos "Gracias".</div>
+            </div>
+            <div class="section">
+                <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 5 "Objetivos de la Misión"</div>
+                <div class="section-title">Diálogo del Maestro</div>
+                <div class="dialogue">Hoy tenemos tres objetivos clave: <br> 1. Aprender sobre diseño y cómo se diferencia del modelado. <br> 2. Introducirnos en los conceptos de dimensiones y planos en el espacio 3D. <br> 3. Tomar el primer paso para diseñar un producto.</div>
+            </div>
+        </div>
+    </div>
+<!-- Actividad 2 (4 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">
+            <span>📚 Actividad 2: Innovación del Día (4 pasos)</span>
+            <span>⏰ Tiempo: 5 minutos</span>
+        </div>
+        <div class="subtitle">Explorar una innovación disruptiva en diseño</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 6 "Innovación del Día"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Hoy vamos a ver algo realmente interesante: un mueble que rompe todas las reglas del diseño tradicional.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Proyectar Diapositiva 7 "Mueble Innovador"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">//(Explicar mientras se reproduce el video)// Les presento el "Gravity Stool". Este mueble es una silla que parece desafiar la gravedad con su estructura única y fluida, fue creada a través de un proceso de diseño experimental. El diseñador utilizó una máquina de magnetismo en conjunto con un material ferroconductor capaz de endurecerse. Piensen en él como un cemento que responde a fuerzas magnéticas pero endurece después de cierto tiempo. Al mezclar estos dos, la forma de la silla se creó de manera natural, lo cual la convierte en una estructura muy resistente e interesante.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 8 "Impacto del Diseño"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Lo increíble del "Gravity Stool" es cómo mezcla arte y funcionalidad. Nos recuerda que en el diseño no hay límites, solo posibilidades. Piensen en cómo podrían llevar esta mentalidad a sus propios proyectos de diseño.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (2 minutos): Proyectar Diapositiva 9 "Reflexión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Después de ver algo tan único, ¿cómo creen que podrían desafiar las normas en sus propios diseños? Tal vez podrían empezar pensando en una silla que nunca hayan visto antes. Les dejo esa pregunta para que se la lleven y piensen.</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 3 (9 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">
+            <span>📚 Actividad 3: Brain Gym (9 pasos)</span>
+            <span>⏰ Tiempo: 18 minutos</span>
+        </div>
+        <div class="subtitle">Explorar conceptos clave de diseño y modelado 3D</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (2 minutos): Proyectar Diapositiva 10 "¿Qué es el Diseño?"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Hoy nos hacemos la pregunta, ¿Qué es diseño?. Pongan atención porque dentro de lo que voy a explicar hay un Easter Egg. Al final de la clase voy a lanzar una pregunta y quien la responda, ganará un mon-e. El diseño es el proceso de planificar y crear algo que no solo cumpla una función específica, sino que también luzca bien. A diferencia del modelado 3D, que se enfoca en la creación de formas tridimensionales, el diseño incluye tanto la planificación como la ejecución, considerando cómo se ve, cómo funciona y cómo se siente. El diseño es más que solo apariencia; es solucionar problemas de manera visual y funcional.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Proyectar Diapositiva 11 "Funcionalidad en el Diseño"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Cuando hablamos de diseño, debemos pensar en cómo el objeto va a ser usado. Un buen diseño encuentra el equilibrio entre funcionalidad y estética. Piensen en una silla: puede verse moderna y atractiva, pero si es incómoda, ha fallado en su propósito. Entonces, el verdadero reto del diseño es encontrar ese punto medio donde el objeto no solo se vea bien, sino que también sea útil y cómodo.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (2 minutos): Proyectar Diapositiva 12 "Dimensiones"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">En el diseño 3D, nos apoyamos de las computadoras y los espacios simulados para llevar a cabo nuestro proceso. Nos permite visualizar y trabajar nuestras ideas de una manera sencilla y de bajo costo. Dentro de estos entornos tridimensionales, existen algunos conceptos que es importante conozcamos. Las dimensiones, los planos y los ejes de movimiento. Las dimensiones son las medidas básicas que definen un objeto: largo, ancho y altura. Estas tres dimensiones forman la base de cualquier cosa que diseñemos en el espacio tridimensional. Por ejemplo, una mesa tiene una longitud (largo), un ancho (profundidad), y una altura.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (2 minutos): Proyectar Diapositiva 13 "Planos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Los planos en diseño 3D son como cortes imaginarios que dividen el espacio. Los planos nos permiten ubicarnos en el espacio 3D, piensen en un astronauta flotando en el espacio sideral, ¿Cómo saben hacia dónde es arriba? La respuesta es que no saben porque no existe un "arriba" en el espacio, no hay direcciones allá afuera, por eso la necesidad de elementos que nos ayuden a orientarnos. De igual manera, nos permiten conocer desde qué punto estamos viendo a un objeto. -Hay tres planos principales: <br> - Plano Frontal: Divide el objeto en partes delantera y trasera, como si cortaras un libro por la mitad. <br> - Plano Horizontal: Divide el objeto en superior e inferior, como una línea que separa el techo del suelo. <br> - Plano Sagital: Divide el objeto en partes izquierda y derecha, como si cortaras una mesa por la mitad a lo largo. Estos planos nos ayudan a entender y organizar las partes del objeto en el espacio tridimensional.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (2 minutos): Proyectar Diapositiva 14 "Aplicación de los Planos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Para visualizar mejor cómo los planos funcionan, pensemos en un automóvil. El plano frontal nos muestra la vista delantera del coche; el plano horizontal nos permite ver el techo y el chasis desde arriba, y el plano sagital nos permite ver el coche desde el costado, cortándolo en dos mitades simétricas. Cada uno de estos planos organiza y divide el objeto, lo que facilita su diseño y análisis en 3D.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (2 minutos): Proyectar Diapositiva 15 "Ejes de Movimiento"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">También tenemos algo llamado ejes en diseño 3D, y son líneas invisibles que actúan como puntos de referencia para rotar o mover un objeto. Hay tres ejes principales: <br> - Eje X: Es una línea horizontal que corre de izquierda a derecha. <br> - Eje Y: Es una línea vertical que va de arriba hacia abajo. <br> - Eje Z: Es una línea que va de adelante hacia atrás, añadiendo profundidad. Piensen en una puerta giratoria: rota alrededor de su eje vertical, o eje Y.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (2 minutos): Proyectar Diapositiva 16 "Aplicación de Ejes en el Diseño"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Veamos un ejemplo práctico: una silla giratoria. Esta silla puede girar alrededor de su eje vertical (eje Y) y moverse hacia adelante y atrás a lo largo del eje Z. Cada vez que diseñamos un objeto en 3D, consideramos estos ejes para asegurarnos de que el objeto no solo se vea bien, sino que también funcione correctamente. ¿Qué pasa si olvidamos uno de estos ejes en el diseño? El objeto podría no funcionar como queremos.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (2 minutos): Proyectar Diapositiva 17 "Reflexión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora, piensen en los objetos que usan todos los días: un teléfono, una bicicleta, una mesa. Todos estos objetos fueron diseñados considerando dimensiones, planos y ejes. Cuando entienden estos conceptos, pueden empezar a ver el diseño que los rodea de manera diferente, entendiendo cómo se pensaron para funcionar bien en un espacio 3D. ¿Alguna vez se han preguntado cómo se diseña un objeto antes de que llegue a sus manos? Seguramente al escuchar la palabra diseño de les vienen a la mente dibujos de objetos vistos desde arriba, enfrente y la derecha. Ahora saben qué son esos dibujos, vistas del mismo objeto desde diferentes puntos de vista para poder apreciar los detalles desde todas las perspectivas.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 9 (2 minutos): Proyectar Diapositiva 18 "Objetivos de la Misión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¿Alguna duda sobre los conceptos que revisamos?. Hoy hemos cubierto conceptos esenciales del diseño en 3D: <br> 1. La diferencia entre diseño y modelado 3D. <br> 2. Cómo funcionan las dimensiones, los planos y los ejes en el diseño. Estos fundamentos nos ayudarán a abordar cualquier proyecto de diseño con una mejor comprensión de cómo se crean y funcionan los objetos.</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 4 (4 pasos) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">
+            <span>📚 Actividad 4: State Change (4 pasos)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Despejar la mente y activar la creatividad</div>
+    </div>
+    <div id="state_change" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 19 "State Change"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora vamos a hacer una breve actividad para despejar la mente y activar nuestra creatividad. Tomen un lápiz y un papel, porque en un momento les pediré que hagan un pequeño dibujo.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 20 "Doodle Time"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Quiero que dibujen lo primero que se les venga a la mente. Puede ser cualquier cosa: un objeto, un lugar, algo abstracto, lo que sea. Tienen 1 minuto para hacer este doodle, así que no se preocupen por los detalles, solo dejen fluir su creatividad. ¡Manos a la obra!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 21 "Tiempo de Doodle"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Tienen 1 minuto para hacer su dibujo. Vamos a comenzar ahora.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 22 "Conclusión del Doodle"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¡Tiempo! Muy bien, este pequeño ejercicio nos ayuda a liberar nuestra mente y a pensar de manera creativa. Recuerden, el diseño también es una forma de expresarse, así que mantengan esa creatividad activa mientras seguimos con nuestra actividad.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 5 (3 pasos) -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">
+            <span>📚 Actividad 5: Team Gnius (3 pasos)</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Formación de equipos y preparación para el desafío</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 23 "Team Gnius"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Vamos a formar equipos de 3 personas para el desafío que estaremos trabajando hasta la siguiente clase.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 24 "Formando Equipos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Tienen 1 minuto para formar sus equipos. Encuentren a dos compañeros con los que les gustaría trabajar y pónganse juntos. En caso de no completar los equipos de 3, pueden adoptar a algún compañero que se haya quedado sin equipo.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 25 "Preparación"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora elijan un representante de cada equipo para que venga por sus Magic Tablets que es en donde van a trabajar sus ideas.</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 6 (6 pasos) -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>📚 Actividad 6: Challenge (6 pasos)</span>
+            <span>⏰ Tiempo: 15 minutos</span>
+        </div>
+        <div class="subtitle">Investigación y recopilación de datos sobre las necesidades de un elefante</div>
+    </div>
+    <div id="challenge" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 26 "Entendiendo al Usuario"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Antes de diseñar cualquier cosa, lo más importante es entender a quién va dirigido nuestro diseño. Un buen diseño no solo se ve bien, sino que también cumple con las necesidades del usuario. Hoy vamos a enfocarnos en entender a un usuario muy especial: el elefante.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 27 "Desafío de Investigación"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">El desafío de hoy es investigar todo lo que puedan sobre las necesidades de un elefante. Quiero que piensen en su tamaño, su comportamiento, su hábitat, y cualquier otra cosa que crean relevante. Aunque no les diré aún qué vamos a diseñar, toda esta información será clave para el proyecto.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 28 "Instrucciones"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Van a trabajar en sus equipos para recopilar tanta información como puedan sobre los elefantes. Pueden usar internet, libros o cualquier recurso que tengan disponible. Tienen 10 minutos para esta actividad, así que organicen bien su tiempo y colaboren para obtener los mejores datos posibles.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (10 minutos): Proyectar Diapositiva 29 "Tiempo de Investigación"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue"></div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (1 minuto): Proyectar Diapositiva 30 "Conclusión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¡Tiempo! Espero que hayan recopilado mucha información interesante. Tomen foto de las necesidades de sus elefantes en sus magic tablets. Esta investigación será la base para nuestro diseño en la próxima misión, así que asegúrense de guardar bien sus notas.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (1 minuto): Proyectar Diapositiva 31 "Objetivos de la Misión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ésta investigación les será muy útil cuando estén diseñando, por lo que acaban de dar el primer paso en su proceso de diseño. Y con eso hemos completado el 3er objetivo del día de hoy.</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 7 (3 pasos) -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">
+            <span>📚 Actividad 7: Easter Egg (3 pasos)</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Verificación de atención y premiación con Mon-e</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 32 "Easter Egg"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora es el momento de ver quién ha estado prestando atención. La siguiente diapositiva tiene una pregunta sobre algo que discutimos hoy. Voy a premiar con Mon-e a las tres primeras personas que me den la respuesta correcta. Recuerden, la dinámica es la siguiente: en cuanto pase a la siguiente diapositiva, lean la pregunta y si saben la respuesta, levanten la mano. No digan la respuesta en voz alta, solo levanten la mano. Yo seleccionaré a 3 de ustedes. ¿Listos?</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar Diapositiva 33 "Pregunta del Easter Egg"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Uno, dos, tres.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 34 "Respuesta del Easter Egg"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Uno, ven y dime la respuesta al oído. Ahora tú, dos. Ahora el tres. La respuesta correcta es "Ninguna, no existen direcciones en el espacio". ¡Muy bien a los ganadores, tienen Mon-e!</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 8 (1 paso) -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">
+            <span>📚 Actividad 8: Honor de Dojo (1 paso)</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Recogida de materiales y cierre de la clase</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (2 minutos): Proyectar Diapositiva 34 y reproducir la animación de honor de dojo</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Limpien las notas que hayan hecho en sus magic tablets y entréguenmelas conforme vayan saliendo del salón.</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateActivities() {
+        var selectedTime = document.getElementById('time-select').value;
+        var activities = document.getElementsByClassName('activity');
+
+        document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+        for (var i = 0; i < activities.length; i++) {
+            activities[i].style.display = 'block';
+        }
+
+        if (selectedTime === '45') {
+            document.getElementById('activity-2').style.display = 'none';
+        } else if (selectedTime === '40') {
+            document.getElementById('activity-2').style.display = 'none';
+            document.getElementById('activity-4').style.display = 'none';
+            document.getElementById('activity-8').style.display = 'none';
+        }
+    }
+</script>
+
+
+    <!-- Container para añadir más scripts si es necesario -->
+    <!-- End of container -->
+</div>
+
+</body>
+</html>
+
